@@ -8,46 +8,49 @@
                 <div class="card-header">Posts</div>
 
                 <div class="card-body">
-                   <table class="table">
-                       <tr>
-                           <td>
-                            #
-                           </td>
-                           <td>
-                            Title
-                           </td>
-                           <td>
-                            Publish Date
-                           </td>
-                           <td>
-                            Author
-                           </td>
-                           <td>
-                            Action(s)
-                           </td>
-                       </tr>
-                       <tr>
-                           <td>
+                    <table class="table">
+                        <tr>
+                            <td>
+                                #
+                            </td>
+                            <td>
+                                Title
+                            </td>
+                            <td>
+                                Publish Date
+                            </td>
+                            <td>
+                                Author
+                            </td>
+                            <td>
+                                Action(s)
+                            </td>
+                        </tr>
+                        @foreach ($posts as $post)
+                        <tr>
+                            <td>
 
-                           </td>
-                           <td>
+                            </td>
+                            <td>
+                                {{$post->title}}
+                            </td>
+                            <td>
+                                {{$post->publish_at}}
 
-                           </td>
-                           <td>
+                            </td>
+                            <td>
+                                {{$post->user_id}}
 
-                           </td>
-                           <td>
+                            </td>
+                            <td>
 
-                           </td>
-                           <td>
-
-                           </td>
-                       </tr>
-                   </table>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
