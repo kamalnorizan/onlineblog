@@ -38,7 +38,7 @@
                                 {{\Carbon\Carbon::parse($post->publish_at)->format('d-m-Y')}}
                             </td>
                             <td>
-                                {{$post->user_id}}
+                                {{$post->user->name}}
                             </td>
                             <td>
 
