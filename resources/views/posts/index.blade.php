@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Posts</div>
 
@@ -26,21 +26,19 @@
                                 Action(s)
                             </td>
                         </tr>
-                        @foreach ($posts as $post)
+                        @foreach ($posts as $key=>$post)
                         <tr>
                             <td>
-
+                                {{ ($key+1) + ($posts->perPage()*($posts->currentPage() - 1)) }}
                             </td>
                             <td>
                                 {{$post->title}}
                             </td>
                             <td>
-                                {{$post->publish_at}}
-
+                                {{\Carbon\Carbon::parse($post->publish_at)->format('d-m-Y')}}
                             </td>
                             <td>
                                 {{$post->user_id}}
-
                             </td>
                             <td>
 
@@ -48,6 +46,7 @@
                         </tr>
                         @endforeach
                     </table>
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>
