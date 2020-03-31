@@ -14,17 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //collection
-        // $posts = Post::all();
-        // $posts = Post::where('id',2)->get();
-        $posts = Post::with('user')->paginate(15);
-
-        // single array
-        // $post = Post::find(1);
-        // $post = Post::where('id',2)->first();
-        // $post = Post::first();
-
-        // dd($posts->first()->title);
+        $posts = Post::with('user.posts','comments.user')->paginate(15);
 
         return view('posts.index', compact('posts'));
     }
@@ -59,6 +49,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
+        dd($post);
     }
 
     /**

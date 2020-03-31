@@ -32,16 +32,23 @@
                                 {{ ($key+1) + ($posts->perPage()*($posts->currentPage() - 1)) }}
                             </td>
                             <td>
-                                {{$post->title}}
+                                {{$post->title}} <br>
+                                {{-- @foreach ($post->comments as $comment)
+                                    ~ {{$comment->comment}} <em>{{$comment->user->name}}</em> <br>
+                                @endforeach --}}
                             </td>
                             <td>
                                 {{\Carbon\Carbon::parse($post->publish_at)->format('d-m-Y')}}
                             </td>
                             <td>
-                                {{$post->user->name}}
+                                {{$post->user->name}} <br>
+                                {{-- @foreach ($post->user->posts as $userpost)
+                                    - <em>{{$userpost->title}}</em> <br>
+                                @endforeach --}}
                             </td>
                             <td>
-
+                            <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-primary btn-sm">Show Detail</a>
+                            <a href="/post/{{$post->id}}" class="btn btn-warning btn-sm">Show Detail</a>
                             </td>
                         </tr>
                         @endforeach
