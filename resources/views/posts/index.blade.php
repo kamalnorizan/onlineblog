@@ -48,7 +48,7 @@
                             </td>
                             <td>
                             <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-primary btn-sm">Show Detail</a>
-                            <a href="/post/{{$post->id}}" class="btn btn-warning btn-sm">Show Detail</a>
+                            {{-- <a href="/post/{{$post->id}}" class="btn btn-warning btn-sm">Show Detail</a> --}}
                             </td>
                         </tr>
                         @endforeach

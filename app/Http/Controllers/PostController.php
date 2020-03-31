@@ -48,8 +48,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
-        dd($post);
+        $post = $post->load('user');
+        return view('posts.show',compact('post'));
     }
 
     /**
