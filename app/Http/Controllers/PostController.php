@@ -14,9 +14,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-        $posts = Post::paginate(15);
-        // dd($posts);
+        //collection
+        // $posts = Post::all();
+        // $posts = Post::where('id',2)->get();
+        $posts = Post::with('user')->paginate(15);
+
+        // single array
+        // $post = Post::find(1);
+        // $post = Post::where('id',2)->first();
+        // $post = Post::first();
+
+        // dd($posts->first()->title);
+
         return view('posts.index', compact('posts'));
     }
 
