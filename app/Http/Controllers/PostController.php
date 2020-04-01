@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Auth;
 
 class PostController extends Controller
 {
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user.posts','comments.user')->paginate(15);
+        $posts = Post::with('user.posts','comments.user')->latest()->paginate(15);
 
         return view('posts.index', compact('posts'));
     }
@@ -26,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -37,7 +38,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|min:10',
+            'publish_at' => 'date',
+            'body' => 'required|min:10'
+            ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->publish_at = $request->publish_at;
+        $post->body = $request->body;
+        $post->user_id = Auth::user()->id;
+        $post->save();
+
+        return redirect('/post');
     }
 
     /**
@@ -49,6 +63,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post = $post->load('user');
+        $post = $post->load('comments.user');
         return view('posts.show',compact('post'));
     }
 

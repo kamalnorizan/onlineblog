@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Posts</div>
-
+                <div class="card-header">
+                    Posts <a href="{{ route('post.create') }}" class="btn btn-sm btn-primary float-right">Create New Post</a>
+                </div>
                 <div class="card-body">
                     <table class="table">
                         <tr>
@@ -47,8 +48,9 @@
                                 @endforeach --}}
                             </td>
                             <td>
-                            <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-primary btn-sm">Show Detail</a>
-                            {{-- <a href="/post/{{$post->id}}" class="btn btn-warning btn-sm">Show Detail</a> --}}
+                                <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-primary btn-sm">Show
+                                    Detail</a>
+                                {{-- <a href="/post/{{$post->id}}" class="btn btn-warning btn-sm">Show Detail</a> --}}
                             </td>
                         </tr>
                         @endforeach
