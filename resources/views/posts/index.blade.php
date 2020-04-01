@@ -23,7 +23,7 @@
                             <td>
                                 Author
                             </td>
-                            <td>
+                            <td width="15%">
                                 Action(s)
                             </td>
                         </tr>
@@ -48,9 +48,11 @@
                                 @endforeach --}}
                             </td>
                             <td>
-                                <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-primary btn-sm">Show
-                                    Detail</a>
-                                {{-- <a href="/post/{{$post->id}}" class="btn btn-warning btn-sm">Show Detail</a> --}}
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['post.destroy', $post->id]]) !!}
+                                        <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-primary btn-sm" alt="Show Details"> <i class="icon-eye-open"></i> </a>
+                                        <a href="{{ route('post.edit',[$post->id]) }}" class="btn btn-warning btn-sm" alt="Edit Details"> <i class="icon-edit"></i> </a>
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this post?')" class="btn btn-sm btn-danger"> <i class="icon-remove"></i> </button>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                         @endforeach

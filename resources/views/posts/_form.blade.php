@@ -6,7 +6,7 @@
 
 <div class="form-group{{ $errors->has('publish_at') ? ' has-error' : '' }}">
     {!! Form::label('publish_at', 'Publish Date') !!}
-    {!! Form::date('publish_at',date('Y-m-d'), ['class' => 'form-control', 'required' => 'required']) !!}
+    {!! Form::date('publish_at',null, ['class' => 'form-control', 'required' => 'required']) !!}
     <small class="text-danger">{{ $errors->first('publish_at') }}</small>
 </div>
 

@@ -51,6 +51,7 @@ class PostController extends Controller
         $post->user_id = Auth::user()->id;
         $post->save();
 
+        flash('Your new post created succesfully')->success()->important();
         return redirect('/post');
     }
 
@@ -76,6 +77,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
+        return view('posts.edit',compact('post'));
     }
 
     /**
@@ -87,7 +89,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        flash('Post updated successfully')->success()->important();
+        return redirect('/post');
     }
 
     /**
@@ -99,5 +104,11 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->delete();
+
+        // Post::destroy($post->id);
+
+        flash('Post deleted succesfully')->error()->important();
+        return back();
     }
 }

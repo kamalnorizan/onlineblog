@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css"
+        integrity="sha256-MmuZTsWcczT1IhH71aqQmja5jRcXy3mL/NOvjUy9tso=" crossorigin="anonymous" />
+
+
 </head>
 <body>
     <div id="app">
@@ -75,6 +80,15 @@
         </nav>
 
         <main class="py-4">
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        @include('flash::message')
+                    </div>
+                </div>
+            </div>
+
             @yield('content')
         </main>
     </div>
