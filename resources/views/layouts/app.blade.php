@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Empty Page</title>
+    <title>Online Blog</title>
 
     <link href="{{ asset('res/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('res/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 
     <link href="{{ asset('res/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('res/css/style.css') }}" rel="stylesheet">
-
+    @yield('head')
 </head>
 
 <body class="">
@@ -155,7 +155,7 @@
             </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-4">
-                    <h2>This is main title</h2>
+                    <h2>@yield('maintitle')</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="index.html">This is</a>
@@ -197,6 +197,7 @@
     <script src="{{ asset('res/js/inspinia.js') }}"></script>
     <script src="{{ asset('res/js/plugins/pace/pace.min.js') }}"></script>
 
+    @yield('script')
 
 </body>
 

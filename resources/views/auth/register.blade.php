@@ -48,7 +48,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <input name="password-confirm" type="password" class="form-control" placeholder="Reconfirm Password" required="">
+                    <input name="password_confirmation" type="password" class="form-control" placeholder="Reconfirm Password" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
 
