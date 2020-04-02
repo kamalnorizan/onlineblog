@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +41,20 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'comment' => 'required|min:10'
+        ]);
+
+        $comment = new Comment();
+        $comment->post_id = $request->post_id;
+        $comment->user_id = Auth::user()->id;
+        $comment->comment = $request->comment;
+        $comment->save();
+
+        flash('Comment created successfully')->success()->important();
+        return back();
+
     }
 
     /**
@@ -80,6 +99,13 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        if($comment->user_id!=Auth::user()->id){
+            flash('You are not allowed to remove the comment')->error()->important();
+            return back();
+        }
+
+        $comment->delete();
+        flash('Deleted successfully')->error()->important();
+        return back();
     }
 }

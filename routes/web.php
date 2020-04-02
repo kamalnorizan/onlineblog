@@ -28,4 +28,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/post/create','PostController@create')->name('post.create');
 // Route::get('/post/{post}','PostController@show')->name('post.show');
 Route::resource('post', 'PostController');
+Route::resource('comment', 'CommentController')->except(['index','show','update','create','edit']);
 
