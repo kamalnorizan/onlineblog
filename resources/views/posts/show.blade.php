@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="ibox">
+                <div class="ibox-title">
                     {{ $post->title }} ~ <em>{{ $post->user->name }}</em>
                 </div>
 
-                <div class="card-body">
+                <div class="ibox-content">
                     {{ $post->body }}
                     <hr>
                     <br>
@@ -49,5 +48,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

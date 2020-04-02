@@ -139,9 +139,15 @@
 
 
                         <li>
-                            <a href="login.html">
+                            <a href="{{route('logout')}}" onclick="
+                            event.preventDefault();
+                            document.getElementById('logout-form').submit();
+                            ">
                                 <i class="fa fa-sign-out"></i> Log out
                             </a>
+                            {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id'=>'logout-form']) !!}
+
+                            {!! Form::close() !!}
                         </li>
                     </ul>
 
