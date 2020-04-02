@@ -15,7 +15,13 @@
                                 <li><a href="contacts.html">Contacts</a></li>
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">Logout</a></li>
+                                <li><a href="{{ route('logout')}}" onclick="
+                            event.preventDefault();
+                            document.getElementById('logout-form').submit();" >Logout</a></li>
+
+                            {!! Form::open(['method' => 'POST', 'route' => 'logout', 'id'=>'logout-form']) !!}
+
+                            {!! Form::close() !!}
                             </ul>
                         </div>
                         <div class="logo-element">

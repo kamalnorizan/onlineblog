@@ -1,77 +1,77 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <title>INSPINIA | Register</title>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    <link href="{{ asset('res/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/css/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('res/css/style.css') }}" rel="stylesheet">
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+</head>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+<body class="gray-bg">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <div>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                <h1 class="logo-name">IN+</h1>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
+            <h3>Register to IN+</h3>
+            <p>Create account to see it in action.</p>
+            <form class="m-t" role="form" method="POST" action="{{route('register')}}">
+                @csrf
+                <div class="form-group @error('name') has-error @enderror">
+                    <input name="name" type="text" class="form-control" value="{{ old('name') }}" placeholder="Name" required="">
+                    @error('name')
+                        {{$message}}
+                    @enderror
+                </div>
+                <div class="form-group @error('email') has-error @enderror">
+                    <input name="email" type="email" class="form-control " value="{{ old('email') }}" placeholder="Email" required="">
+                    @error('email')
+                        {{$message}}
+                    @enderror
+                </div>
+                <div class="form-group @error('password') has-error @enderror">
+                    <input name="password" type="password" class="form-control" placeholder="Password" required="">
+                    @error('password')
+                        {{$message}}
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <input name="password-confirm" type="password" class="form-control" placeholder="Reconfirm Password" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="{{route('login')}}">Login</a>
+            </form>
+            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
         </div>
     </div>
-</div>
-@endsection
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset('res/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('res/js/bootstrap.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('res/js/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+</body>
+
+</html>
